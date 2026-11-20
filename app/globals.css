@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@theme {
+  --font-mincho: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "MS PMincho", serif;
+  --animate-shake: shake 0.35s ease-in-out infinite;
+  --animate-unfold: unfold 0.6s ease-out;
+
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-14deg) translateY(-4px); }
+    75% { transform: rotate(14deg) translateY(-4px); }
+  }
+
+  @keyframes unfold {
+    from { opacity: 0; transform: scaleY(0.2) translateY(-20px); }
+    to { opacity: 1; transform: scaleY(1) translateY(0); }
+  }
+}
+
+.writing-vertical {
+  writing-mode: vertical-rl;
+}
