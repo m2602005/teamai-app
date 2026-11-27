@@ -29,7 +29,11 @@
   --warn:#f0a940; --warn-soft:#3b2e17; --bad:#ff7b70; --bad-soft:#40211f;
   --sun:#ff8a80; --sat:#7fa8ff; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.6;
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:15px;line-height:1.6;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 110px}
 .wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 .num{font-family:var(--font-display);font-variant-numeric:tabular-nums}
@@ -421,7 +425,7 @@ function drawChart(v,dd,pd,limit,upto){
     el("text",{x:m.l-6,y:y(t)+4,"text-anchor":"end","font-size":10.5,fill:"var(--muted)"},t?(t/10000>=1?(t/10000)+"万":(t/1000)+"千"):"0")}
   [1,10,20,N].forEach(d=>el("text",{x:x(d),y:H-6,"text-anchor":"middle","font-size":10.5,fill:"var(--muted)"},d+"日"));
   if(limit){el("line",{x1:m.l,x2:W-m.r,y1:y(limit),y2:y(limit),stroke:"var(--fg)","stroke-width":1.5,"stroke-dasharray":"5 4",opacity:.55});
-    el("text",{x:W-m.r,y:y(limit)-6,"text-anchor":"end","font-size":11,"font-weight":700,fill:"var(--fg)"},"限度額 "+yen(limit))}
+    el("text",{x:m.l+6,y:y(limit)-6,"text-anchor":"start","font-size":11,"font-weight":700,fill:"var(--fg)"},"限度額 "+yen(limit))}
   const path=pts=>pts.map((p,i)=>(i?"L":"M")+x(p[0]).toFixed(1)+" "+y(p[1]).toFixed(1)).join("");
   if(B.length)el("path",{d:path(B),fill:"none",stroke:"var(--last)","stroke-width":2,"stroke-linejoin":"round"});
   if(A.length){
